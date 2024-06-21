@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ['Saira', 'sans-serif'],
+        // If using Google Font, replace 'CustomFont' with 'Roboto'
+        // custom: ['Roboto', 'sans-serif'],
+      },
+    },
   },
   plugins: [require('daisyui'),],
 }

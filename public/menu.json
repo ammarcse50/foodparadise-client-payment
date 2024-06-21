@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Bruschetta",
+    "category": "Popular",
+    "description": "Grilled bread topped with diced tomatoes, garlic, and basil.",
+    "price": 6.99,
+    "image": "https://i.ibb.co/Fxjt0VZ/download-1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Caesar Salad",
+    "category": "Popular",
+    "description": "Fresh romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
+    "price": 8.99,
+    "image": "https://i.ibb.co/QDpfnd8/download-2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Grilled Ribeye Steak",
+    "category": "Popular",
+    "description": "Juicy ribeye steak grilled to perfection, served with mashed potatoes and steamed vegetables.",
+    "price": 24.99,
+    "image": "https://i.ibb.co/KG7hfV2/download-3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Shrimp Scampi",
+    "category": "Popular",
+    "description": "Succulent shrimp sautéed in garlic butter sauce, served over linguine pasta.",
+    "price": 18.99,
+    "image": "https://i.ibb.co/VCRkK4R/download-4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Vegetable Stir-Fry",
+    "category": "Popular",
+    "description": "A colorful mix of fresh vegetables stir-fried in a savory sauce, served with steamed rice.",
+    "price": 14.99,
+    "image": "https://i.ibb.co/G9Hqp1j/download-5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Spaghetti Carbonara",
+    "category": "Popular",
+    "description": "Classic Italian pasta dish with creamy sauce, pancetta, and Parmesan cheese.",
+    "price": 16.99,
+    "image": "https://i.ibb.co/v1nmQYp/download.jpg"
+  },
+  {
+    "id": 7,
+    "name": "BBQ Ribs",
+    "category": "Grilled and BBQ",
+    "description": "Slow-cooked ribs glazed with BBQ sauce, served with coleslaw and baked beans.",
+    "price": 22.99,
+    "image": "https://i.ibb.co/bb2F99N/download-7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Chocolate Lava Cake",
+    "category": "Desserts",
+    "description": "Warm chocolate cake with a gooey molten center, served with vanilla ice cream.",
+    "price": 7.99,
+    "image": "https://i.ibb.co/L6HNw5P/download-8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Margarita",
+    "category": "Beverages",
+    "description": "Classic cocktail with tequila, lime juice, and triple sec, served on the rocks.",
+    "price": 9.99,
+    "image": "https://i.ibb.co/v1nmQYp/download.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Chef's Special",
+    "category": "Specials",
+    "description": "A unique dish crafted by our chef, changing daily based on fresh ingredients.",
+    "price": 19.99,
+    "image": "https://i.ibb.co/qBfY3z7/download-10.jpg"
+  }
+]
