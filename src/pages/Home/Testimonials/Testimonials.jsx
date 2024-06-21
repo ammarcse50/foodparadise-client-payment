@@ -11,7 +11,7 @@ import { Navigation } from "swiper/modules";
 import SectionTitle from "../../../components/SectionTitle/SectionTiltle";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
-  const [rating, setRating] = useState(0);
+  
   useEffect(() => {
     fetch("reviews.json")
       .then((res) => res.json())
@@ -32,6 +32,7 @@ const Testimonials = () => {
                  style={{maxWidth:200}}
                  className="mx-auto m-4"
                 value={review.rating}
+                readOnly
            
               />
               <p>{review.details}</p>

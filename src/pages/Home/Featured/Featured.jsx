@@ -3,7 +3,7 @@ import featuredImg from '/images/home/featured.jpg'
 import SectionTitle from  '../../../components/SectionTitle/SectionTiltle'
 const Featured = () => {
     return (
-        <div className={`bg-[url('${featuredImg}')]  bg-no-repeat `} >
+        <div className={`bg-[url('${featuredImg}')] bg-fixed  `} >
          <SectionTitle 
          heading={'Featured Item'}
          subHeading={'CHECK IT OUT'}

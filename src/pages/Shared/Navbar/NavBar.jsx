@@ -7,7 +7,7 @@ const NavBar = () => {
     <Link><li><a>HOME</a></li></Link> 
     <Link><li><a>CONTACT US</a></li></Link> 
     <Link><li><a>DASHBOARD</a></li></Link> 
-    <Link><li><a>OUR MENU</a></li></Link> 
+    <Link to={'/menu'}><li><a>OUR MENU</a></li></Link> 
     <Link><li><a>OUR SHOP</a></li></Link> 
     
     
