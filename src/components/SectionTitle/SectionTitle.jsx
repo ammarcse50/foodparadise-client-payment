@@ -1,6 +1,5 @@
-import React from 'react';
 
-const SectionTiltle = ({heading,subHeading}) => {
+const SectionTitle = ({heading,subHeading}) => {
     return (
         <div className='mx-auto text-center md:w-4/12 my-9'>
             <p className='text-orange-400 mb-3'>{subHeading}</p>
@@ -9,4 +8,4 @@ const SectionTiltle = ({heading,subHeading}) => {
     );
 };
 
-export default SectionTiltle;
+export default SectionTitle;

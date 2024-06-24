@@ -3,13 +3,13 @@ import logo from "/images/logo/logo.png"
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-neutral text-neutral-content">
+      <footer className="footer p-10 text-white bg-neutral text-neutral-content">
         <aside>
-        <img src={logo} className="w-20" alt="" />
+        <img src={logo} className="w-20 rounded-lg" alt="" />
           <p>
-            ACME Industries Ltd.
+           Best Food Resturant 
             <br />
-            Providing reliable tech since 1992
+            Providing reliable service since 2020
           </p>
         </aside>
         <nav>

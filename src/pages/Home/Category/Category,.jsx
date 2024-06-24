@@ -10,15 +10,15 @@ import slide1 from "/images/home/slide1.jpg";
 import slide2 from "/images/home/slide2.jpg";
 import slide3 from "/images/home/slide3.jpg";
 import slide4 from "/images/home/slide4.jpg";
-import SectionTiltle from "../../../components/SectionTitle/SectionTiltle";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Category = () => {
   return (
     <section>
-      <SectionTiltle
+      <SectionTitle
         subHeading={"From 11.00am to 10.00pm"}
         heading={"Order Online"}
-      ></SectionTiltle>
+      ></SectionTitle>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

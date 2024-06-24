@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SectionTiltle from "../../../components/SectionTitle/SectionTiltle";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 const PopularMenu = () => {
@@ -22,7 +22,7 @@ const PopularMenu = () => {
     },[])
   return (
     <section className="mb-12">
-      <SectionTiltle heading={"Popular Items"} subHeading={"OUR MENU"}></SectionTiltle>
+      <SectionTitle heading={"Popular Items"} subHeading={"OUR MENU"}></SectionTitle>
 
       <div className="grid grid-cols-2 gap-4">
          {
