@@ -4,14 +4,14 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Helmet } from "react-helmet-async";
 const Featured = () => {
   return (
-    <div className={`bg-[url('${featuredImg}')] `}>
+    <div className={`bg-[url('${featuredImg}')] bg-fixed `}>
       <Helmet>
         <title>foodparadise | Featured</title>
       </Helmet>
       <SectionTitle
         heading={"Featured Item"}
         subHeading={"CHECK IT OUT"}
-      ></SectionTitle>
+        ></SectionTitle>
 
       <div className="md:flex text-white justify-center items-center py-20 px-36">
         <div className="">
