@@ -6,8 +6,9 @@ import Cover from "../Shared/Cover/Cover";
 import coverOrder from "/images/menu/banner3.jpg";
 import useMenu from "../../hooks/useMenu";
 import FoodCard from "../../components/FoodCard/FoodCard";
+import OrderTab from "./orderTab/OrderTab";
 
-const Orders = () => {
+const Orders = ({items}) => {
   const [tabIndex, setTabIndex] = useState(0);
   const menu = useMenu();
   console.log(menu);
@@ -31,32 +32,16 @@ const Orders = () => {
           <Tab selectedClassName="bg-orange-500 text-white rounded">Grill</Tab>
         </TabList>
         <TabPanel>
-          <div className="grid grid-cols-3">
-            {coffees.map((coffee) => (
-              <FoodCard key={coffee.id} item={coffee}></FoodCard>
-            ))}
-          </div>
+         <OrderTab items={coffees}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-3">
-            {bbqs.map((bbq) => (
-              <FoodCard key={bbq.id} item={bbq}></FoodCard>
-            ))}
-          </div>
+        <OrderTab items={bbqs}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-3">
-            {shawarmas.map((shawarma) => (
-              <FoodCard key={shawarma.id} item={shawarma}></FoodCard>
-            ))}
-          </div>
+        <OrderTab items={shawarmas}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-3">
-            {Grills.map((grill) => (
-              <FoodCard key={grill.id} item={grill}></FoodCard>
-            ))}
-          </div>
+        <OrderTab items={Grills}></OrderTab>
         </TabPanel>
       </Tabs>
     </div>
