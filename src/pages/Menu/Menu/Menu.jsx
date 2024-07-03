@@ -4,24 +4,26 @@ import menuImg from "/images/menu/banner3.jpg";
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
-import steak from "/images/menu/steak.jpg";
+import coffee from "/images/menu/coffee.jpg";
 
 const Menu = () => {
-  const menu = useMenu();
+  const [menu] = useMenu();
   console.log(menu);
 
-  const dessert = menu.filter((item) => item.category === "Desserts");
+  const coffees = menu.filter((item) => item.category === "Coffee");
 
-  const grillBbq = menu.filter((item) => item.category === "Grilled and BBQ");
-  const beverages = menu.filter((item) => item.category === "Beverages");
-  const offered = menu.filter((item) => item.category === "Offered");
+
+
+  const bbqs = menu.filter((item) => item.category === "Grilled and BBQ");
+  const sharmas = menu.filter((item) => item.category === "Sharma");
+  // const offered = menu.filter((item) => item.category === "Offered");
 
   return (
     <div>
       <Helmet>
         <title>foodparadise | Menu</title>
       </Helmet>
-
+          {/* COFFEE SECTION  */}
       <Cover img={menuImg} title={"OUR MENU"}></Cover>
 
       <SectionTitle
@@ -30,10 +32,36 @@ const Menu = () => {
       ></SectionTitle>
 
       <MenuCategory
-        items={dessert}
-        title={"BEEF STEAK"}
-        coverImg={steak}
+        items={coffees}
+        title={"COFFEE"}
+        coverImg={coffee}
       ></MenuCategory>
+
+       {/* SHAWARMA SECTION  */}
+    
+
+<SectionTitle
+  subHeading={"BBQ"}
+  heading={"TODAY'S  OFFER"}
+></SectionTitle>
+
+<MenuCategory
+  items={bbqs}
+  title={"BBQ"}
+  coverImg={coffee}
+></MenuCategory>
+
+<SectionTitle
+  subHeading={"SHAWARMA"}
+  heading={"TODAY'S  OFFER"}
+></SectionTitle>
+
+<MenuCategory
+  items={sharmas}
+  title={"SHAWARMA"}
+  coverImg={coffee}
+></MenuCategory>
+
     </div>
   );
 };

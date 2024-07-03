@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "mongodb": "^6.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
@@ -36,5 +40,10 @@
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
