@@ -11,7 +11,7 @@ import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import Swal from "sweetalert2";
 const Login = () => {
     const {signInUser} = useContext(AuthContext)
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
  const navigate = useNavigate()
  const location = useLocation();
 let from  = location.state?.from?.pathname || "/";

@@ -4,10 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart]= useCart();
+
   const handleLogOut = () => {
-    logOut().then((res) => {
+    logOut().then(() => {
       Swal.fire("Logged Out User!");
     });
   };
@@ -43,7 +46,7 @@ const NavBar = () => {
           <button className="">
             <FaShoppingCart />
 
-            <div className="badge badge-secondary">+0</div>
+            <div className="badge badge-secondary">{cart.length}</div>
           </button>
         </li>
       </Link>

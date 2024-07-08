@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const FoodCard = ({ item }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
   const location = useLocation();
+  const [,refetch]= useCart()
 
   const handleAddToCart = (food) => {
     if (user && user.email) {
@@ -21,7 +23,7 @@ const FoodCard = ({ item }) => {
         price,
       };
       axiosSecure.post("/carts", cartItem).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "top-end",
@@ -31,6 +33,8 @@ const FoodCard = ({ item }) => {
             timer: 1500,
           });
         }
+        // refetch the  cart updated count 
+        refetch()
       });
     } else {
       Swal.fire({
@@ -63,7 +67,7 @@ const FoodCard = ({ item }) => {
         <p>{description}</p>
         <div className="card-actions">
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={handleAddToCart}
             className="btn btn-primary"
           >
             Add to Cart
