@@ -5,22 +5,25 @@ import { register } from "swiper/element";
 import { useForm } from "react-hook-form";
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
-  const [disabled, setDisabled] = useState(true);
 
-  const captchaRef = useRef(null);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+
+
   const onSubmit = (data) => {
+    console.log('clickedd')
     console.log(data);
 
     createUser(data.email, data.password)
     .then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      Swal.fire("Account Created!");
     });
   };
 
@@ -71,7 +74,7 @@ const SignUp = () => {
             })}
             placeholder="password"
             className="input input-bordered"
-            required
+    
           />
           {errors.password?.type === "required" && (
             <span className="text-red-400">Password is required</span>
@@ -89,13 +92,11 @@ const SignUp = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-          <p>
-            Alredy Have An Account ? please{" "}
+           <button  type="submit">Register</button>
+
+         <p>   Alredy Have An Account ? please{" "}
             <Link className="text-blue-400" to={"/login"}>
-              SignUp
+             Login
             </Link>
           </p>
         </div>

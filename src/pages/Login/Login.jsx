@@ -1,32 +1,45 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect,  useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
+  
   validateCaptcha,
 } from "react-simple-captcha";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const Login = () => {
     const {signInUser} = useContext(AuthContext)
   const [disabled, setDisabled] = useState(true);
-
-  const captchaRef = useRef(null);
+ const navigate = useNavigate()
+ const location = useLocation();
+let from  = location.state?.from?.pathname || "/";
+  
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data =>{
+    signInUser(data.email,data.password)
+    .then(res=>{
+        const result= res.user;
+        console.log(result)
+        Swal.fire("login success!");
+        navigate(from,{replace:true})
+    })
+  };
 
-  console.log(watch("example"));
+   
+
   const handleValidateCaptcha = (e) => {
-    const user_captcha_value = captchaRef.current.value;
+    e.preventDefault()
+    const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
 
     if (validateCaptcha(user_captcha_value) == true) {
-      alert("Captcha Matched");
+      
       setDisabled(false);
     } else {
         setDisabled(true)
-      alert("Captcha Does Not Match");
+     
     }
   };
 
@@ -34,19 +47,7 @@ const Login = () => {
     loadCaptchaEnginge(6);
   }, []);
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
 
-//     const form = e.target;
-//     const email = form.email.value;
-//     const password = form.password.value;
-
-//     const user = { email, password };
-
-//     signInUser(email,password)
-//     .then(res=>console.log(res.user))
-//     .catch(err=>console.log(err))
-//   };
 
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -91,7 +92,8 @@ const Login = () => {
           </label>
           <LoadCanvasTemplate />
           <input
-            ref={captchaRef}
+          
+            onBlur={handleValidateCaptcha}
             type="captcha"
             id="captcha"
             name="captcha"
@@ -99,8 +101,8 @@ const Login = () => {
             className="input input-bordered"
             required
           />
-
-          <button className="btn " onClick={handleValidateCaptcha}>Validate</button>
+{/* 
+          <button className="btn " >Validate</button> */}
         </div>
         <div className="form-control mt-6">
           <button type="submit" disabled={disabled} className="btn btn-primary">

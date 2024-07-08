@@ -28,16 +28,16 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const createUser = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password);
+   return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const signInUser = () => {
+  const signInUser = (email,password) => {
     SetLoading(true)
-    signInWithEmailAndPassword(auth, email, password);
+   return  signInWithEmailAndPassword(auth, email, password);
   };
   const logOut=()=>{
     SetLoading(true)
-    signOut(auth)
+   return  signOut(auth)
   }
 
   const authInfo = {
