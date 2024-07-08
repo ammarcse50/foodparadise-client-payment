@@ -1,20 +1,73 @@
-const FoodCard = ({item}) => {
-   const {image,name,description,price}= item
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+
+const FoodCard = ({ item }) => {
+  const navigate = useNavigate();
+  const { name, image, description, price, _id } = item;
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure()
+  const location = useLocation();
+
+  const handleAddToCart = (food) => {
+    if (user && user.email) {
+      const cartItem = {
+        menuId: _id,
+        email: user.email,
+        name,
+        image,
+        price,
+      };
+      axiosSecure.post("/carts", cartItem).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your cart is saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "You are not logged In",
+        text: "Please Login to Add to Cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes,Login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send the user to login page
+
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+  };
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
       <figure className="px-10 pt-10">
-        <img
-          src={image}
-          alt="Shoes"
-          className="rounded-xl"
-        />
+        <img src={image} alt="Shoes" className="rounded-xl" />
       </figure>
-      <p className="bg-slate-600 text-white absolute right-0 mr-12 mt-12 p-2 rounded">{price}</p>
+      <p className="bg-slate-600 text-white absolute right-0 mr-12 mt-12 p-2 rounded">
+        {price}
+      </p>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{name}</h2>
         <p>{description}</p>
         <div className="card-actions">
-          <button className="btn btn-primary">Buy Now</button>
+          <button
+            onClick={() => handleAddToCart(item)}
+            className="btn btn-primary"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

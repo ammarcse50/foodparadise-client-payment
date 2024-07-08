@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "swiper/element";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
-
+  const navigate = useNavigate()
   const {
-    register,
+    register, reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
@@ -24,6 +25,15 @@ const SignUp = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       Swal.fire("Account Created!");
+      updateUserProfile(data.name,data.photoURL)
+      .then(res=>{
+        console.log('user profile is update',res)
+        reset();
+        Swal.fire("Porfile Updated");
+        navigate('/')
+
+      })
+      .catch(err=>console.log(err))
     });
   };
 
@@ -43,6 +53,21 @@ const SignUp = () => {
           />
           {errors.name && (
             <span className="text-red-400">Name is required</span>
+          )}
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input
+            type="text"
+            name="photoURL"
+            {...register("URL", { required: true })}
+            placeholder="URL"
+            className="input input-bordered"
+          />
+          {errors.photoURL && (
+            <span className="text-red-400">PhotoURL is required</span>
           )}
         </div>
         <div className="form-control">
@@ -69,6 +94,9 @@ const SignUp = () => {
             name="password"
             {...register("password", {
               required: true,
+              maxLength:20,
+              minLength: 6,
+            
               pattern:
                 /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
             })}

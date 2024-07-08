@@ -15,9 +15,12 @@ const Login = () => {
  const navigate = useNavigate()
  const location = useLocation();
 let from  = location.state?.from?.pathname || "/";
-  
+  console.log({from})
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+   
   const onSubmit = data =>{
+     
     signInUser(data.email,data.password)
     .then(res=>{
         const result= res.user;
