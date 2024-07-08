@@ -41,7 +41,7 @@ const NavBar = () => {
           <a>Orders</a>
         </li>
       </Link>
-      <Link>
+      <Link to={'/dashboard/cart'}>
         <li>
           <button className="">
             <FaShoppingCart />

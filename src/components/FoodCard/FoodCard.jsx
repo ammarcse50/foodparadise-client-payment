@@ -13,7 +13,7 @@ const FoodCard = ({ item }) => {
   const location = useLocation();
   const [,refetch]= useCart()
 
-  const handleAddToCart = (food) => {
+  const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = {
         menuId: _id,
@@ -33,7 +33,7 @@ const FoodCard = ({ item }) => {
             timer: 1500,
           });
         }
-        // refetch the  cart updated count 
+        // refetch the  cart updated the cart count
         refetch()
       });
     } else {
