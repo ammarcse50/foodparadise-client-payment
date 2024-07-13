@@ -1,7 +1,6 @@
-import React, { useCallback } from "react";
+
 import useCart from "../../../hooks/useCart";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { FaRemoveFormat } from "react-icons/fa";
+
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";

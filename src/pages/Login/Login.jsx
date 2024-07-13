@@ -7,8 +7,9 @@ import {
 } from "react-simple-captcha";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 const Login = () => {
     const {signInUser} = useContext(AuthContext)
   const [disabled, setDisabled] = useState(false);
@@ -53,9 +54,10 @@ let from  = location.state?.from?.pathname || "/";
 
 
   return (
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
+           <SocialLogin></SocialLogin>
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-        
+    
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
