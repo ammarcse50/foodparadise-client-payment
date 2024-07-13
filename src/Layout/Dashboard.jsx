@@ -19,35 +19,35 @@ const Dashboard = () => {
         <ul className="menu p-4">
           {isAdmin ? (
             <>
-              {" "}
+       
               <li>
                 <NavLink to={"/dashboard/adminHome"}>
-                  {" "}
+             
                   <FaHome></FaHome>Admin Home
                 </NavLink>
               </li>
               <li>
                 <NavLink to={"/dashboard/addItems"}>
-                  {" "}
+             
                   <FaUtensilSpoon></FaUtensilSpoon>Add Item
                 </NavLink>
               </li>
               <li>
                 <NavLink to={"/dashboard/manageItems"}>
-                  {" "}
+               
                   <FaList />
                   Manage Item
                 </NavLink>
               </li>
               <li>
                 <NavLink to={"/dashboard/bookings"}>
-                  {" "}
+                
                   <FaAd />
                   Manage Bookings
                 </NavLink>
               </li>
-              <li>
-                <NavLink to={"/dashboard/allUsers"}>
+              <li >
+                <NavLink  to={"/dashboard/allUsers"}>
                  
                   <FaUsers />
                   All Users
@@ -56,10 +56,10 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              {" "}
+             
               <li>
                 <NavLink to={"/dashboard/userHome"}>
-                  {" "}
+                 
                   <FaHome></FaHome>User Home
                 </NavLink>
               </li>
@@ -83,8 +83,8 @@ const Dashboard = () => {
                   Add a Review
                 </NavLink>
               </li>
-              <li>
-                <NavLink to={"/dashboard/review"}>
+              <li  >
+                <NavLink  to={"/dashboard/review"}>
                   {" "}
                   <FaList />
                   My Bookings
