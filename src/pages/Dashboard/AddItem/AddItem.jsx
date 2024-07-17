@@ -3,10 +3,14 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import axios from "axios";
 
 const AddItem = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+
+  const image_hosting_key = "31b8c3042470c9673a22cc6767e6a68f";
+  const image_hosting_api = ` https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const {
     register,
@@ -15,9 +19,37 @@ const AddItem = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     // send img to imgbb and  get  url
+
+    const imageFile = { image: data.image[0] };
+
+    const res = await axios.post(image_hosting_api, imageFile, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    // console.log(res.data.data.display_url);
+    if (res.data.success) {
+      const menutItem = {
+        name: data.name,
+        category: data.category,
+
+        descrption: data.recipe,
+        price: parseFloat(data.price),
+        image: res.data.data.display_url,
+      };
+      const menuRes = await axiosSecure.post("/menu", menutItem);
+      console.log(menuRes);
+
+      if (menuRes.data.insertedId) {
+        // show success popup
+
+        alert("menu added");
+      }
+    }
   };
+
   return (
     <div>
       <SectionTitle
@@ -63,7 +95,7 @@ const AddItem = () => {
               </label>
               <input
                 type="number"
-                {...register("price*", { required: true })}
+                {...register("price", { required: true })}
                 placeholder="Price"
                 className="input input-bordered"
               />
