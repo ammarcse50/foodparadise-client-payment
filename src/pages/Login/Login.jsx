@@ -27,7 +27,7 @@ let from  = location.state?.from?.pathname || "/";
         const result= res.user;
         console.log(result)
         Swal.fire("login success!");
-        navigate(from,{replace:true})
+        navigate("/",{replace:true})
     })
   };
 

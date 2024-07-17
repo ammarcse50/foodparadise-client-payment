@@ -5,20 +5,37 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile, GoogleAuthProvider
+  updateProfile,
+  GoogleAuthProvider,
 } from "firebase/auth";
-import { createContext,useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
-
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
   const [loading, SetLoading] = useState([]);
   const Provider = new GoogleAuthProvider();
+  const axiosPublic = useAxiosPublic();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+
+      if (currentUser) {
+        //get token store client
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        //todo remove token if(stored in client)
+
+        localStorage.removeItem("access-token");
+      }
+
       console.log("current User", currentUser);
       SetLoading(false);
     });
@@ -26,32 +43,30 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubscribe();
     };
-  }, []);
-    const updateUserProfile = (name,photo)=>{
-     return  updateProfile(auth.currentUser, {
-        displayName: name , photoURL: photo
-      })
-    }
+  }, [axiosPublic]);
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
   const createUser = (email, password) => {
-   return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const googleLogin = ()=>{
-       
-    SetLoading(true)
-     return signInWithPopup(auth, Provider)
-
-
-  }
-
-  const signInUser = (email,password) => {
-    SetLoading(true)
-   return  signInWithEmailAndPassword(auth, email, password);
+  const googleLogin = () => {
+    SetLoading(true);
+    return signInWithPopup(auth, Provider);
   };
-  const logOut=()=>{
-    SetLoading(true)
-   return  signOut(auth)
-  }
+
+  const signInUser = (email, password) => {
+    SetLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const logOut = () => {
+    SetLoading(true);
+    return signOut(auth);
+  };
 
   const authInfo = {
     user,
@@ -60,7 +75,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     signInUser,
     logOut,
-    updateUserProfile
+    updateUserProfile,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
