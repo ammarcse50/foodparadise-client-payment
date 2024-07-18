@@ -4,9 +4,12 @@ import useMenu from "../../../hooks/useMenu.jsx";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { axiosSecure } from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 const ManageItem = () => {
-  const [menu, refetch] = useMenu();
-
+  const [menu, refetch, loading] = useMenu();
+  if (loading) {
+    return <span className="loading loading-spinner loading-lg"></span>;
+  }
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -32,10 +35,6 @@ const ManageItem = () => {
       }
     });
   };
-
-//   if (loading) {
-//     return <span className="loading loading-spinner loading-lg"></span>;
-//   }
 
   return (
     <div>
@@ -87,7 +86,10 @@ const ManageItem = () => {
                   </td>
                   <td>${item.price}</td>
                   <td>
-                    <FaEdit className="text-green-400" size={30}></FaEdit>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                  
+                      <FaEdit className="text-green-400" size={30}></FaEdit>
+                    </Link>
                   </td>
                   <th>
                     <button
