@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import  { useContext} from "react";
 import { AuthContext } from "../../components/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "swiper/element";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 const SignUp = () => {

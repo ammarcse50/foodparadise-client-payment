@@ -15,6 +15,7 @@ const AddItem = () => {
   const {
     register,
     handleSubmit,
+    reset,
 
     formState: { errors },
   } = useForm();
@@ -31,7 +32,7 @@ const AddItem = () => {
 
     // console.log(res.data.data.display_url);
     if (res.data.success) {
-      const menutItem = {
+      const menuItem = {
         name: data.name,
         category: data.category,
 
@@ -39,13 +40,13 @@ const AddItem = () => {
         price: parseFloat(data.price),
         image: res.data.data.display_url,
       };
-      const menuRes = await axiosSecure.post("/menu", menutItem);
+      const menuRes = await axiosSecure.post("/menu", menuItem);
       console.log(menuRes);
 
       if (menuRes.data.insertedId) {
         // show success popup
-        
-    
+
+        reset();
         Swal.fire({
           position: "top-end",
           icon: "success",

@@ -5,25 +5,23 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 const hosting_key = "31b8c3042470c9673a22cc6767e6a68f";
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${hosting_key}`;
 const UpdateItem = () => {
+  const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  const { name, image, category, description, price } = useLoaderData();
+  const { name, image, category, description, price, _id } = useLoaderData();
 
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
+    console.log("clicked");
     // send img to imgbb and  get  url
 
     const imageFile = { image: data.image[0] };
 
-    const res = await axios.post(image_hosting_api, imageFile, {
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -31,24 +29,25 @@ const UpdateItem = () => {
 
     // console.log(res.data.data.display_url);
     if (res.data.success) {
-      const menutItem = {
+      const menuItem = {
         name: data.name,
         category: data.category,
 
-        descrption: data.recipe,
+        description: data.description,
         price: parseFloat(data.price),
         image: res.data.data.display_url,
       };
-      const menuRes = await axiosSecure.patch("/menu", menutItem);
+      const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
       console.log(menuRes);
 
-      if (menuRes.data.insertedId) {
+      if (menuRes.data.modifiedCount > 0) {
         // show success popup
+        reset();
 
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your menu has been added",
+          title: "Your menu has been updated",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -126,7 +125,7 @@ const UpdateItem = () => {
               <span className="label-text"></span>
             </label>
             <img src={image} className="w-20 rounded mb-2" alt="" />
-            <input type="file" {...register("image", { required: true })} />
+            <input type="file"  {...register("image")} />
           </div>
 
           <button
