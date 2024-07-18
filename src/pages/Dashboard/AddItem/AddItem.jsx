@@ -1,21 +1,21 @@
 import { FaUtensilSpoon } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
+import Swal from "sweetalert2";
+
+const hosting_key = "31b8c3042470c9673a22cc6767e6a68f";
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${hosting_key}`;
 
 const AddItem = () => {
-  const axiosPublic = useAxiosPublic();
+  //   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-
-  const image_hosting_key = "31b8c3042470c9673a22cc6767e6a68f";
-  const image_hosting_api = ` https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
@@ -44,8 +44,15 @@ const AddItem = () => {
 
       if (menuRes.data.insertedId) {
         // show success popup
-
-        alert("menu added");
+        
+    
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your menu has been added",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
   };
