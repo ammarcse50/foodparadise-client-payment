@@ -1,4 +1,3 @@
-import axios from "axios";
 import { FaUtensilSpoon } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
