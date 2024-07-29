@@ -6,8 +6,8 @@ import { axiosSecure } from "../../../hooks/useAxiosSecure.jsx";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 const ManageItem = () => {
-  const [menu, refetch, loading] = useMenu();
-  if (loading) {
+  const [menu, refetch, menuloading] = useMenu();
+  if (menuloading) {
     return <span className="loading loading-spinner loading-lg"></span>;
   }
   const handleDelete = (id) => {

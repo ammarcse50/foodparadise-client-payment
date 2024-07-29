@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "/images/logo/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
@@ -14,34 +14,34 @@ const NavBar = () => {
       Swal.fire("Logged Out User!");
     });
   };
-  const navLinks = (
+  const navNavLinks = (
     <>
-      <Link>
+      <NavLink>
         <li>
           <a>HOME</a>
         </li>
-      </Link>
-      <Link>
+      </NavLink>
+      <NavLink>
         <li>
           <a>CONTACT US</a>
         </li>
-      </Link>
-      <Link>
+      </NavLink>
+      <NavLink>
         <li>
           <a>DASHBOARD</a>
         </li>
-      </Link>
-      <Link to={"/menu"}>
+      </NavLink>
+      <NavLink to={"/menu"}>
         <li>
           <a>OUR MENU</a>
         </li>
-      </Link>
-      <Link to={"/orders"}>
+      </NavLink>
+      <NavLink to={"/orders"}>
         <li>
           <a>Orders</a>
         </li>
-      </Link>
-      <Link to={'/dashboard/cart'}>
+      </NavLink>
+      <NavLink to={'/dashboard/cart'}>
         <li>
           <button className="">
             <FaShoppingCart />
@@ -49,23 +49,23 @@ const NavBar = () => {
             <div className="badge badge-secondary">{cart.length}</div>
           </button>
         </li>
-      </Link>
+      </NavLink>
       {user ? (
         <>
           {" "}
           <span className="mt-2">{user?.displayName} </span>
-          <Link className="m-2" onClick={handleLogOut}>
+          <NavLink className="m-2" onClick={handleLogOut}>
             LogOut
-          </Link>
+          </NavLink>
         </>
       ) : (
         <>
           {" "}
-          <Link className="m-2" to={"/login"}>
+          <NavLink className="m-2" to={"/login"}>
             <li>
               <a>Login</a>
             </li>
-          </Link>{" "}
+          </NavLink>{" "}
         </>
       )}
     </>
@@ -94,14 +94,14 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-sm text-white font-bold dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {navLinks}
+            {navNavLinks}
           </ul>
         </div>
         <img src={logo} className="w-20 rounded-full " alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal  text-white font-bold px-1">
-          {navLinks}
+          {navNavLinks}
         </ul>
       </div>
       <div className="navbar-end">

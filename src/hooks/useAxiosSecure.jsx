@@ -8,7 +8,7 @@ export const axiosSecure = axios.create({
 const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { logOut } = useAuth();
-  
+
   //request interceptor for every secure api
   axiosSecure.interceptors.request.use(
     function (config) {
@@ -34,10 +34,12 @@ const useAxiosSecure = () => {
     },
     async (error) => {
       const status = error.response.status;
+
       if (status === 401 || status === 403) {
         await logOut();
-        navigate("/login");
+        navigate("/login", { replace: true });
       }
+
       // console.log("status error in the interceptor", error);
 
       return Promise.reject(error);

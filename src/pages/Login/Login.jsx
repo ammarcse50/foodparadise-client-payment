@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  console.log({ from });
+  
   const {
     register,
     handleSubmit,
@@ -28,7 +28,7 @@ const Login = () => {
       console.log(result);
       Swal.fire("login success!");
 
-      navigate("/", { replace: true });
+      navigate(from, { replace: true });
     });
   };
 

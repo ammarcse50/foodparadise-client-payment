@@ -5,7 +5,6 @@ import Cover from "../Shared/Cover/Cover";
 
 import coverOrder from "/images/menu/banner3.jpg";
 import useMenu from "../../hooks/useMenu";
-import FoodCard from "../../components/FoodCard/FoodCard";
 import OrderTab from "./orderTab/OrderTab";
 import { useParams } from "react-router-dom";
 

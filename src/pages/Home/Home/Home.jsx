@@ -15,6 +15,7 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
       <PopularMenu></PopularMenu>
+      
 
       <Featured></Featured>
 
