@@ -50,7 +50,7 @@ const CheckOutForm = () => {
     }
 
     // confirm payment
-    
+
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -68,6 +68,24 @@ const CheckOutForm = () => {
       if (paymentIntent.status === "succeeded") {
         console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
+
+        // now save th payment in database
+
+        const payment = {
+          email: user.email,
+          price: TotalPrice,
+          transactionId: paymentIntent.id,
+
+          date: new Date(),
+          cartIds: cart.map((item) => item._id),
+
+          menuItemIds: cart.map((item) => item.menuId),
+          status: "pending",
+        };
+
+        const res = await axiosSecure.post("/payments", payment);
+
+        console.log("payment saved", res.data);
       }
     }
   };

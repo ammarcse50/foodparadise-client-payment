@@ -5,6 +5,8 @@ import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import coffee from "/images/menu/coffee.jpg";
+import bbqImg from '/images/menu/bbq.jpg'
+import sharmaImg from '/images/menu/shawarma1.jpg'
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -48,18 +50,19 @@ const Menu = () => {
 <MenuCategory
   items={bbqs}
   title={"BBQ"}
-  coverImg={coffee}
+  coverImg={bbqImg}
 ></MenuCategory>
 
 <SectionTitle
   subHeading={"SHAWARMA"}
   heading={"TODAY'S  OFFER"}
+
 ></SectionTitle>
 
 <MenuCategory
   items={sharmas}
   title={"SHAWARMA"}
-  coverImg={coffee}
+  coverImg={sharmaImg }
 ></MenuCategory>
 
     </div>
