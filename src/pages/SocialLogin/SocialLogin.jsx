@@ -1,33 +1,37 @@
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import useUsers from "../../hooks/useUsers";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
-  const { googleLogin} = useAuth();
+  const navigate = useNavigate();
+  const { googleLogin } = useAuth();
 
-//   const [users] =useUsers()
-    const axiosPublic = useAxiosSecure()
+  //   const [users] =useUsers()
+  const axiosPublic = useAxiosSecure();
   const handleGoogleLogin = () => {
     googleLogin().then((result) => {
       console.log(result.user);
-       const userInfo={
+      const userInfo = {
+        name: result?.user?.displayName,
+        email: result?.user?.email,
+        photo: result?.user?.photoURL,
+      };
 
-            name: result?.user?.displayName,
-            email: result?.user?.email,
-            photo: result?.user?.photoURL
-          
-       }
-
-        axiosPublic.post('/users',userInfo)
-        .then(()=>console.log('done added'))
+      axiosPublic
+        .post("/users", userInfo)
+        .then(() => console.log("done added"));
     });
+    navigate("/");
   };
 
   return (
     <div>
-      <button className="btn btn-sm btn-warning mt-10 mx-24" onClick={handleGoogleLogin}>
-     <FaGoogle></FaGoogle>   Google Login
+      <button
+        className="btn btn-sm btn-warning mt-10 mx-24"
+        onClick={handleGoogleLogin}
+      >
+        <FaGoogle></FaGoogle> Google Login
       </button>
     </div>
   );

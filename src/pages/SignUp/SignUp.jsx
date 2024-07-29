@@ -16,7 +16,7 @@ const SignUp = () => {
 
 
   const onSubmit = (data) => {
-    console.log('clickedd')
+  
     console.log(data);
 
     createUser(data.email, data.password)

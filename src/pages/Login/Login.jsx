@@ -1,8 +1,7 @@
-import React, { useContext, useEffect,  useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  
   validateCaptcha,
 } from "react-simple-captcha";
 import { useForm } from "react-hook-form";
@@ -11,39 +10,37 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
 const Login = () => {
-    const {signInUser} = useContext(AuthContext)
+  const { signInUser } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(false);
- const navigate = useNavigate()
- const location = useLocation();
-let from  = location.state?.from?.pathname || "/";
-  console.log({from})
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  console.log({ from });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-   
-  const onSubmit = data =>{
-     
-    signInUser(data.email,data.password)
-    .then(res=>{
-        const result= res.user;
-        console.log(result)
-        Swal.fire("login success!");
-        navigate("/",{replace:true})
-    })
+  const onSubmit = (data) => {
+    signInUser(data.email, data.password).then((res) => {
+      const result = res.user;
+      console.log(result);
+      Swal.fire("login success!");
+
+      navigate("/", { replace: true });
+    });
   };
 
-   
-
   const handleValidateCaptcha = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
 
     if (validateCaptcha(user_captcha_value) == true) {
-      
       setDisabled(false);
     } else {
-        setDisabled(true)
-     
+      setDisabled(true);
     }
   };
 
@@ -51,26 +48,24 @@ let from  = location.state?.from?.pathname || "/";
     loadCaptchaEnginge(6);
   }, []);
 
-
-
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
-           <SocialLogin></SocialLogin>
+      <SocialLogin></SocialLogin>
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-    
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input
             type="email"
-            {...register("email", { required: true })} 
+            {...register("email", { required: true })}
             name="email"
             placeholder="email"
             className="input input-bordered"
-           
           />
-           {errors.email && <span className='text-red-400'>Email is required</span>}
+          {errors.email && (
+            <span className="text-red-400">Email is required</span>
+          )}
         </div>
         <div className="form-control">
           <label className="label">
@@ -78,13 +73,18 @@ let from  = location.state?.from?.pathname || "/";
           </label>
           <input
             type="password"
-            {...register("password", { required: true , minLength:6 ,maxLength:20})} 
+            {...register("password", {
+              required: true,
+              minLength: 6,
+              maxLength: 20,
+            })}
             name="password"
             placeholder="password"
             className="input input-bordered"
-          
           />
-           {errors.password && <span className='text-red-400'>Password is required</span>}
+          {errors.password && (
+            <span className="text-red-400">Password is required</span>
+          )}
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">
               Forgot password?
@@ -97,7 +97,6 @@ let from  = location.state?.from?.pathname || "/";
           </label>
           <LoadCanvasTemplate />
           <input
-          
             onBlur={handleValidateCaptcha}
             type="captcha"
             id="captcha"
@@ -106,14 +105,19 @@ let from  = location.state?.from?.pathname || "/";
             className="input input-bordered"
             required
           />
-{/* 
+          {/* 
           <button className="btn " >Validate</button> */}
         </div>
         <div className="form-control mt-6">
           <button type="submit" disabled={disabled} className="btn btn-primary">
             Login
           </button>
-          <p>New Here ? please <Link to={'/signup'}  className="text-blue-400">Register</Link ></p>
+          <p>
+            New Here ? please{" "}
+            <Link to={"/signup"} className="text-blue-400">
+              Register
+            </Link>
+          </p>
         </div>
       </form>
     </div>
