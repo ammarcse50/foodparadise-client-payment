@@ -26,7 +26,7 @@ const Testimonials = () => {
   });
 
   // useEffect(() => {
-  //   fetch("https://foodparadise-server.vercel.app/reviews")
+  //   fetch("https://foodparadise-server-payment-production.up.railway.app/reviews")
   //     .then((res) => res.json())
   //     .then((data) => setReviews(data));
   // }, []);

@@ -7,16 +7,16 @@ import MenuCategory from "../MenuCategory/MenuCategory";
 import coffee from "/images/menu/coffee.jpg";
 import bbqImg from "/images/menu/bbq.jpg";
 import sharmaImg from "/images/home/featuredBg.jpg";
-import burgerImg from "/images/menu/Grill.jpg"
+import burgerImg from "/images/menu/Grill.jpg";
 
 const Menu = () => {
   const [menu] = useMenu();
   console.log(menu);
-
+  
   const coffees = menu.filter((item) => item.category === "coffee");
 
   const Grills = menu.filter((item) => item.category === "Grill");
-  const sharmas = menu.filter((item) => item.category === "shawarma");
+  const shawarmas = menu.filter((item) => item.category === "shawarma");
   const burgers = menu.filter((item) => item.category === "burger");
   // const offered = menu.filter((item) => item.category === "Offered");
 
@@ -46,7 +46,11 @@ const Menu = () => {
         heading={"TODAY'S  OFFER"}
       ></SectionTitle>
 
-      <MenuCategory items={Grills} title={"Grill"} coverImg={bbqImg}></MenuCategory>
+      <MenuCategory
+        items={Grills}
+        title={"Grill"}
+        coverImg={bbqImg}
+      ></MenuCategory>
 
       <SectionTitle
         subHeading={"SHAWARMA"}
@@ -54,7 +58,7 @@ const Menu = () => {
       ></SectionTitle>
 
       <MenuCategory
-        items={sharmas}
+        items={shawarmas}
         title={"SHAWARMA"}
         coverImg={sharmaImg}
       ></MenuCategory>

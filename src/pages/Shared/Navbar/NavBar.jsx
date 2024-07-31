@@ -50,11 +50,11 @@ const NavBar = () => {
           <a>OUR MENU</a>
         </NavLink>{" "}
       </li>
-      <li>
+      {/* <li>
         <NavLink style={navLinkStyle} to={"/orders"}>
           <a>Orders</a>
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink style={navLinkStyle} to={"/dashboard/cart"}>
           <button className="">

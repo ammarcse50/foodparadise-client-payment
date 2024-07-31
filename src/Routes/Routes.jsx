@@ -113,7 +113,7 @@ const router = createBrowserRouter([
               </AdminRoute>
             ),
             loader: ({ params }) =>
-              fetch(`https://foodparadise-server.vercel.app/menu/${params.id}`),
+              fetch(`https://foodparadise-server-payment-production.up.railway.app/menu/${params.id}`),
           },
           {
             path: "allUsers",
