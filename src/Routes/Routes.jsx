@@ -18,6 +18,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Contact from "../pages/Contact/Contact";
+import AddReview from "../pages/Dashboard/AddReview/AddReview";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
           {
             path: "userHome",
             element: <UserHome></UserHome>,
+          },
+          {
+            path: "userRating",
+            element: <AddReview></AddReview>,
           },
           {
             path: "paymentHistory",

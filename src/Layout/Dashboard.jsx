@@ -85,7 +85,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink style={navLinkStyle} to={"/dashboard/review"}>
+                <NavLink style={navLinkStyle} to={"/dashboard/userRating"}>
                   {" "}
                   <FaAd />
                   Add a Review
