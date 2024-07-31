@@ -4,10 +4,11 @@ import Category from "../Category/Category,";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import Testimonials from "../Testimonials/Testimonials";
+import ScrollToTop from "react-scroll-to-top";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Helmet>
         <title>foodparadise | HOME</title>
       </Helmet>
@@ -20,6 +21,10 @@ const Home = () => {
 
         <Testimonials></Testimonials>
       </div>
+      <ScrollToTop
+        smooth
+        className="bg-orange-500 rounded-full p-2 shadow-lg"
+      />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
+import Headroom from "react-headroom";
 
 const navLinkStyle = ({ isActive }) => ({
   backgroundColor: isActive ? "green" : "transparent",
@@ -82,7 +83,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-black  z-auto  bg-opacity-30 ">
+    <Headroom className="z-50 absolute w-full"> <div className="navbar bg-black bg-opacity-30 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-primary lg:hidden">
@@ -131,7 +132,7 @@ const NavBar = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </div></Headroom>
   );
 };
 

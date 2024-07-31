@@ -8,6 +8,7 @@ import img3 from "../../../public/images/home/03.jpg";
 const Banner = () => {
   return (
     <Carousel
+      className="-z-50"
       autoPlay={{
         delay: 500,
         disableOnInteraction: false,

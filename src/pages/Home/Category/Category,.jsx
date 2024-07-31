@@ -14,12 +14,13 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Category = () => {
   return (
-    <section className="z-1">
+    <section>
       <SectionTitle
         subHeading={"From 11.00am to 10.00pm"}
         heading={"Order Online"}
       ></SectionTitle>
       <Swiper
+    
         slidesPerView={4}
         spaceBetween={30}
         centeredSlides={true}
@@ -29,7 +30,7 @@ const Category = () => {
         modules={[Pagination]}
         className="mySwiper mb-24"
       >
-        <SwiperSlide>
+        <SwiperSlide >
           <img src={slide1} className="h-[400px] " alt="" />
           <h3 className="text-center absolute left-0  bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
             coffee
