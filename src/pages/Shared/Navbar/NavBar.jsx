@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "/images/logo/logo.png";
 import notLogo from "/images/others/profile.png";
 import Swal from "sweetalert2";
@@ -37,7 +37,10 @@ const NavBar = () => {
       </li>
 
       <li>
-        <NavLink style={navLinkStyle} to={isAdmin ? "/dashboard/adminHome":"/dashboard/userHome"}>
+        <NavLink
+          style={navLinkStyle}
+          to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+        >
           <a>DASHBOARD</a>
         </NavLink>{" "}
       </li>
@@ -79,7 +82,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar fixed z-10 bg-opacity-30  bg-black ">
+    <div className="navbar bg-black  z-auto  bg-opacity-30 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-primary lg:hidden">
@@ -118,11 +121,14 @@ const NavBar = () => {
       </div>
       <div className="avatar w-1/2">
         <div className="w-20 rounded-full ml-60">
-          {user ? (
-            <img src={user?.photoURL} className="" alt="Upload" />
-          ) : (
-            <img src={notLogo} />
-          )}
+          <Link to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}>
+            {" "}
+            {user ? (
+              <img src={user?.photoURL} className="" alt="Upload" />
+            ) : (
+              <img src={notLogo} />
+            )}
+          </Link>
         </div>
       </div>
     </div>

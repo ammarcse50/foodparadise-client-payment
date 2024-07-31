@@ -14,7 +14,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Category = () => {
   return (
-    <section>
+    <section className="z-1">
       <SectionTitle
         subHeading={"From 11.00am to 10.00pm"}
         heading={"Order Online"}
@@ -30,27 +30,27 @@ const Category = () => {
         className="mySwiper mb-24"
       >
         <SwiperSlide>
-          <img src={slide1} className="h-[400px]"  alt="" />
+          <img src={slide1} className="h-[400px] " alt="" />
           <h3 className="text-center absolute left-0  bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
             coffee
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} className="h-[400px]" alt="" />
+          <img src={slide2} className="h-[400px] " alt="" />
           <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
             shawarma
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide3} className="h-[400px]"  alt="" />
+          <img src={slide3} className="h-[400px]" alt="" />
           <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
-           Grill
+            Grill
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide4} className="h-[400px]"  alt="" />
+          <img src={slide4} className="h-[400px]" alt="" />
           <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
-           Burger
+            Burger
           </h3>
         </SwiperSlide>
       </Swiper>
