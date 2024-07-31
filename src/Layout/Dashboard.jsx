@@ -21,8 +21,12 @@ const navLinkStyle = ({ isActive }) => ({
 const Dashboard = () => {
   const { user } = useAuth();
   const [cart] = useCart();
-  const [isAdmin] = useAdmin();
+  const [isAdmin,isAdminLoading] = useAdmin();
 
+    if(isAdminLoading)
+    {
+      return <span className="loading loading-spinner loading-lg"></span>
+    }
   return (
     <div className="flex text-white ">
       <div className="w-64 min-h-screen  bg-orange-700 ">

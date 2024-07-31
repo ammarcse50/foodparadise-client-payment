@@ -6,8 +6,8 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import coffee from "/images/menu/coffee.jpg";
 import bbqImg from "/images/menu/bbq.jpg";
-import sharmaImg from "/images/menu/shawarma1.jpg";
-import grillImg from "/images/menu/Grill.jpg"
+import sharmaImg from "/images/home/featuredBg.jpg";
+import burgerImg from "/images/menu/Grill.jpg"
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -15,9 +15,9 @@ const Menu = () => {
 
   const coffees = menu.filter((item) => item.category === "coffee");
 
-  const bbqs = menu.filter((item) => item.category === "bbq");
+  const Grills = menu.filter((item) => item.category === "Grill");
   const sharmas = menu.filter((item) => item.category === "shawarma");
-  const grills = menu.filter((item) => item.category === "Grill");
+  const burgers = menu.filter((item) => item.category === "burger");
   // const offered = menu.filter((item) => item.category === "Offered");
 
   return (
@@ -42,11 +42,11 @@ const Menu = () => {
       {/* SHAWARMA SECTION  */}
 
       <SectionTitle
-        subHeading={"BBQ"}
+        subHeading={"Grill"}
         heading={"TODAY'S  OFFER"}
       ></SectionTitle>
 
-      <MenuCategory items={bbqs} title={"BBQ"} coverImg={bbqImg}></MenuCategory>
+      <MenuCategory items={Grills} title={"Grill"} coverImg={bbqImg}></MenuCategory>
 
       <SectionTitle
         subHeading={"SHAWARMA"}
@@ -59,14 +59,14 @@ const Menu = () => {
         coverImg={sharmaImg}
       ></MenuCategory>
       <SectionTitle
-        subHeading={"Grill"}
+        subHeading={"Burger"}
         heading={"TODAY'S  OFFER"}
       ></SectionTitle>
 
       <MenuCategory
-        items={grills}
-        title={"GRILL"}
-        coverImg={grillImg}
+        items={burgers}
+        title={"Burger"}
+        coverImg={burgerImg}
       ></MenuCategory>
     </div>
   );

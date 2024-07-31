@@ -20,11 +20,11 @@ const Orders = ({ items }) => {
   console.log(menu);
 
   console.log(category);
-  const coffees = menu.filter((item) => item.category ==="drinks" || "Coffee");
+  const coffees = menu.filter((item) => item.category === "coffee");
 
-  const bbqs = menu.filter((item) => item.category === "bbq");
-  const shawarmas = menu.filter((item) => item.category === "shawarma");
   const Grills = menu.filter((item) => item.category === "Grill");
+  const shawarmas = menu.filter((item) => item.category === "shawarma");
+  const burgers = menu.filter((item) => item.category === "burger");
 
   return (
     <div>
@@ -48,7 +48,7 @@ const Orders = ({ items }) => {
           <OrderTab items={shawarmas}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <OrderTab items={bbqs}></OrderTab>
+          <OrderTab items={burgers}></OrderTab>
         </TabPanel>
       </Tabs>
     </div>

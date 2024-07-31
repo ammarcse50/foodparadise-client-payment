@@ -15,12 +15,12 @@ const SocialLogin = () => {
       const userInfo = {
         name: result?.user?.displayName,
         email: result?.user?.email,
-        photo: result?.user?.photoURL,
+        photo: result.user.photoURL,
       };
 
       axiosPublic
         .post("/users", userInfo)
-        .then(() => console.log("done added"));
+        .then(() => console.log("user done added"));
     });
     navigate("/");
   };

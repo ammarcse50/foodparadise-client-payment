@@ -1,10 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "/images/logo/logo.png";
-import { useContext } from "react";
-import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
+import notLogo from "/images/others/profile.png";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
+import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 
 const navLinkStyle = ({ isActive }) => ({
@@ -13,57 +13,45 @@ const navLinkStyle = ({ isActive }) => ({
 });
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
-  const navigate = useNavigate()
 
   const handleLogOut = () => {
     logOut().then(() => {
-      navigate('/')
       Swal.fire("Logged Out User!");
     });
-
   };
   const navNavLinks = (
     <>
       <li>
-   
         <NavLink to="/" style={navLinkStyle}>
           <a>HOME</a>
         </NavLink>{" "}
       </li>
 
       <li>
-   
-        <NavLink style={navLinkStyle} to={'/contact'}>
+        <NavLink style={navLinkStyle} to={"/contact"}>
           <a>CONTACT US</a>
         </NavLink>{" "}
       </li>
 
       <li>
-   
-        <NavLink
-          style={navLinkStyle}
-          to={ isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
-        >
+        <NavLink style={navLinkStyle} to={isAdmin ? "/dashboard/adminHome":"/dashboard/userHome"}>
           <a>DASHBOARD</a>
         </NavLink>{" "}
       </li>
       <li>
-   
         <NavLink style={navLinkStyle} to={"/menu"}>
           <a>OUR MENU</a>
         </NavLink>{" "}
       </li>
       <li>
-   
         <NavLink style={navLinkStyle} to={"/orders"}>
           <a>Orders</a>
         </NavLink>
       </li>
       <li>
-   
         <NavLink style={navLinkStyle} to={"/dashboard/cart"}>
           <button className="">
             <FaShoppingCart className="text-orange-400 shadow shadow-4xl shadow-white    text-xl" />
@@ -74,7 +62,6 @@ const NavBar = () => {
       </li>
       {user ? (
         <>
-     
           <span className="mt-2">{user?.displayName} </span>
           <NavLink className="m-2" onClick={handleLogOut}>
             LogOut
@@ -82,9 +69,7 @@ const NavBar = () => {
         </>
       ) : (
         <>
-     
           <li>
-       
             <NavLink className="m-2" to={"/login"}>
               <a>Login</a>
             </NavLink>{" "}
@@ -132,8 +117,12 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="avatar w-1/2">
-        <div className="w-23 rounded-full ml-44">
-          <img src={user?.photoURL} className="" alt="Upload" />
+        <div className="w-20 rounded-full ml-60">
+          {user ? (
+            <img src={user?.photoURL} className="" alt="Upload" />
+          ) : (
+            <img src={notLogo} />
+          )}
         </div>
       </div>
     </div>

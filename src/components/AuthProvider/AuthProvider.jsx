@@ -19,6 +19,30 @@ const AuthProvider = ({ children }) => {
   const Provider = new GoogleAuthProvider();
   const axiosPublic = useAxiosPublic();
 
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+  const createUser = (email, password) => {
+    SetLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const googleLogin = () => {
+    return signInWithPopup(auth, Provider);
+  };
+
+  const signInUser = (email, password) => {
+    SetLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const logOut = () => {
+    SetLoading(true);
+    return signOut(auth);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -36,7 +60,7 @@ const AuthProvider = ({ children }) => {
         //todo remove token if(stored in client)
 
         localStorage.removeItem("access-token");
-         
+
         SetLoading(false);
       }
 
@@ -47,32 +71,6 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, [axiosPublic]);
-
-  const updateUserProfile = (name, photo) => {
-    SetLoading(true)
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    });
-  };
-  const createUser = (email, password) => {
-    SetLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  const googleLogin = () => {
-    SetLoading(true);
-    return signInWithPopup(auth, Provider);
-  };
-
-  const signInUser = (email, password) => {
-    SetLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-  const logOut = () => {
-    SetLoading(true);
-    return signOut(auth);
-  };
 
   const authInfo = {
     user,
