@@ -59,6 +59,7 @@ const Contact = () => {
           
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your name"
                 className="input input-bordered"
                 required
@@ -70,6 +71,7 @@ const Contact = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered"
                 required
@@ -80,7 +82,7 @@ const Contact = () => {
                 <span className="label-text">Message</span>
               </label>
               <textarea
-                name="message"
+                name="message"P
                 id="message"
                 className="input input-bordered h-24"
               ></textarea>

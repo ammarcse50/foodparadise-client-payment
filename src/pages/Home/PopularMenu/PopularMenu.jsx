@@ -4,9 +4,9 @@ import useMenu from "../../../hooks/useMenu";
 
 const PopularMenu = () => {
         
-    const menu = useMenu();
+    const [menu ]= useMenu();
 
-     const popular = menu.filter(item=>item.category==='Popular' )
+     const popular = menu.filter(item=>item.category==='popular' )
   return (
     <section className="mb-12">
       <SectionTitle heading={"Popular Items"} subHeading={"OUR MENU"}></SectionTitle>

@@ -15,7 +15,7 @@ const navLinkStyle = ({ isActive }) => ({
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
-  const isAdmin = useAdmin();
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut().then(() => {
@@ -33,7 +33,7 @@ const NavBar = () => {
 
       <li>
    
-        <NavLink to={'/contact'}>
+        <NavLink style={navLinkStyle} to={'/contact'}>
           <a>CONTACT US</a>
         </NavLink>{" "}
       </li>
@@ -42,7 +42,7 @@ const NavBar = () => {
    
         <NavLink
           style={navLinkStyle}
-          to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+          to={ isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
         >
           <a>DASHBOARD</a>
         </NavLink>{" "}
