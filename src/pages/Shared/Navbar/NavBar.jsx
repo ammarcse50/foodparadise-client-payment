@@ -5,9 +5,17 @@ import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
+
+const navLinkStyle = ({ isActive }) => ({
+  backgroundColor: isActive ? "green" : "transparent",
+  borderRadius: "4px",
+});
+
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [cart]= useCart();
+  const [cart] = useCart();
+  const isAdmin = useAdmin();
 
   const handleLogOut = () => {
     logOut().then(() => {
@@ -16,43 +24,54 @@ const NavBar = () => {
   };
   const navNavLinks = (
     <>
-      <NavLink>
-        <li>
+      <li>
+   
+        <NavLink to="/" style={navLinkStyle}>
           <a>HOME</a>
-        </li>
-      </NavLink>
-      <NavLink>
-        <li>
-          <a>CONTACT US</a>
-        </li>
-      </NavLink>
-      <NavLink>
-        <li>
-          <a>DASHBOARD</a>
-        </li>
-      </NavLink>
-      <NavLink to={"/menu"}>
-        <li>
-          <a>OUR MENU</a>
-        </li>
-      </NavLink>
-      <NavLink to={"/orders"}>
-        <li>
-          <a>Orders</a>
-        </li>
-      </NavLink>
-      <NavLink to={'/dashboard/cart'}>
-        <li>
-          <button className="">
-            <FaShoppingCart />
+        </NavLink>{" "}
+      </li>
 
-            <div className="badge badge-secondary">{cart.length}</div>
+      <li>
+   
+        <NavLink to={'/contact'}>
+          <a>CONTACT US</a>
+        </NavLink>{" "}
+      </li>
+
+      <li>
+   
+        <NavLink
+          style={navLinkStyle}
+          to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+        >
+          <a>DASHBOARD</a>
+        </NavLink>{" "}
+      </li>
+      <li>
+   
+        <NavLink style={navLinkStyle} to={"/menu"}>
+          <a>OUR MENU</a>
+        </NavLink>{" "}
+      </li>
+      <li>
+   
+        <NavLink style={navLinkStyle} to={"/orders"}>
+          <a>Orders</a>
+        </NavLink>
+      </li>
+      <li>
+   
+        <NavLink style={navLinkStyle} to={"/dashboard/cart"}>
+          <button className="">
+            <FaShoppingCart className="text-orange-400 shadow shadow-4xl shadow-white    text-xl" />
+
+            <div className="badge badge-warning">{cart.length}</div>
           </button>
-        </li>
-      </NavLink>
+        </NavLink>{" "}
+      </li>
       {user ? (
         <>
-          {" "}
+     
           <span className="mt-2">{user?.displayName} </span>
           <NavLink className="m-2" onClick={handleLogOut}>
             LogOut
@@ -60,21 +79,22 @@ const NavBar = () => {
         </>
       ) : (
         <>
-          {" "}
-          <NavLink className="m-2" to={"/login"}>
-            <li>
+     
+          <li>
+       
+            <NavLink className="m-2" to={"/login"}>
               <a>Login</a>
-            </li>
-          </NavLink>{" "}
+            </NavLink>{" "}
+          </li>
         </>
       )}
     </>
   );
   return (
-    <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl   bg-black ">
+    <div className="navbar fixed z-10 bg-opacity-30  bg-black ">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-primary lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -92,20 +112,26 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm text-white font-bold dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm  text-black font-bold dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navNavLinks}
           </ul>
         </div>
-        <img src={logo} className="w-20 rounded-full " alt="" />
+        <img
+          src={logo}
+          className="w-20 rounded-full hidden lg:block mx-20 "
+          alt=""
+        />
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden  lg:flex">
         <ul className="menu menu-horizontal  text-white font-bold px-1">
           {navNavLinks}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="avatar w-1/2">
+        <div className="w-23 rounded-full ml-44">
+          <img src={user?.photoURL} className="" alt="Upload" />
+        </div>
       </div>
     </div>
   );

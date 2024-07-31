@@ -129,7 +129,7 @@ const UpdateItem = () => {
 
           <button
             type="submit"
-            className="btn bg-orange-400 text-white text-3xl "
+            className="btn bg-orange-400 text-black text-3xl "
           >
             Update item <FaUtensilSpoon></FaUtensilSpoon>
           </button>

@@ -1,13 +1,12 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const navigate = useNavigate();
-  const { name, image, description, price, _id } = item;
+  const { name, image, recipe, price,category, _id } = item;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
   const location = useLocation();
@@ -20,6 +19,7 @@ const FoodCard = ({ item }) => {
         email: user.email,
         name,
         image,
+        category,
         price,
       };
       axiosSecure.post("/carts", cartItem).then((res) => {
@@ -59,12 +59,12 @@ const FoodCard = ({ item }) => {
       <figure className="px-10 pt-10">
         <img src={image} alt="Shoes" className="rounded-xl" />
       </figure>
-      <p className="bg-slate-600 text-white absolute right-0 mr-12 mt-12 p-2 rounded">
+      <p className="bg-slate-600 text-black absolute right-0 mr-12 mt-12 p-2 rounded">
         {price}
       </p>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{name}</h2>
-        <p>{description}</p>
+        <p>{recipe}</p>
         <div className="card-actions">
           <button
             onClick={handleAddToCart}

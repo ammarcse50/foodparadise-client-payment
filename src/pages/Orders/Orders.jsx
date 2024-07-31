@@ -31,12 +31,12 @@ const Orders = ({ items }) => {
       <Cover img={coverOrder}></Cover>
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
-          <Tab selectedClassName="bg-orange-500 text-white rounded">COFFEE</Tab>
-          <Tab selectedClassName="bg-orange-500 text-white rounded">BBQ</Tab>
-          <Tab selectedClassName="bg-orange-500 text-white rounded">
+          <Tab selectedClassName="bg-orange-500 text-black rounded">COFFEE</Tab>
+          <Tab selectedClassName="bg-orange-500 text-black rounded">BBQ</Tab>
+          <Tab selectedClassName="bg-orange-500 text-black rounded">
             SHAWARMA
           </Tab>
-          <Tab selectedClassName="bg-orange-500 text-white rounded">Grill</Tab>
+          <Tab selectedClassName="bg-orange-500 text-black rounded">Grill</Tab>
         </TabList>
         <TabPanel>
           <OrderTab items={coffees}></OrderTab>

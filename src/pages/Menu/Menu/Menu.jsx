@@ -5,27 +5,27 @@ import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import coffee from "/images/menu/coffee.jpg";
-import bbqImg from '/images/menu/bbq.jpg'
-import sharmaImg from '/images/menu/shawarma1.jpg'
+import bbqImg from "/images/menu/bbq.jpg";
+import sharmaImg from "/images/menu/shawarma1.jpg";
+import grillImg from "/images/menu/Grill.jpg"
 
 const Menu = () => {
   const [menu] = useMenu();
   console.log(menu);
 
-  const coffees = menu.filter((item) => item.category === "Coffee");
+  const coffees = menu.filter((item) => item.category === "coffee");
 
-
-
-  const bbqs = menu.filter((item) => item.category === "Grilled and BBQ");
-  const sharmas = menu.filter((item) => item.category === "Sharma");
+  const bbqs = menu.filter((item) => item.category === "bbq");
+  const sharmas = menu.filter((item) => item.category === "shawarma");
+  const grills = menu.filter((item) => item.category === "Grill");
   // const offered = menu.filter((item) => item.category === "Offered");
 
   return (
-    <div>
+    <div className="mx-auto max-w-7xl">
       <Helmet>
         <title>foodparadise | Menu</title>
       </Helmet>
-          {/* COFFEE SECTION  */}
+      {/* COFFEE SECTION  */}
       <Cover img={menuImg} title={"OUR MENU"}></Cover>
 
       <SectionTitle
@@ -39,32 +39,35 @@ const Menu = () => {
         coverImg={coffee}
       ></MenuCategory>
 
-       {/* SHAWARMA SECTION  */}
-    
+      {/* SHAWARMA SECTION  */}
 
-<SectionTitle
-  subHeading={"BBQ"}
-  heading={"TODAY'S  OFFER"}
-></SectionTitle>
+      <SectionTitle
+        subHeading={"BBQ"}
+        heading={"TODAY'S  OFFER"}
+      ></SectionTitle>
 
-<MenuCategory
-  items={bbqs}
-  title={"BBQ"}
-  coverImg={bbqImg}
-></MenuCategory>
+      <MenuCategory items={bbqs} title={"BBQ"} coverImg={bbqImg}></MenuCategory>
 
-<SectionTitle
-  subHeading={"SHAWARMA"}
-  heading={"TODAY'S  OFFER"}
+      <SectionTitle
+        subHeading={"SHAWARMA"}
+        heading={"TODAY'S  OFFER"}
+      ></SectionTitle>
 
-></SectionTitle>
+      <MenuCategory
+        items={sharmas}
+        title={"SHAWARMA"}
+        coverImg={sharmaImg}
+      ></MenuCategory>
+      <SectionTitle
+        subHeading={"Grill"}
+        heading={"TODAY'S  OFFER"}
+      ></SectionTitle>
 
-<MenuCategory
-  items={sharmas}
-  title={"SHAWARMA"}
-  coverImg={sharmaImg }
-></MenuCategory>
-
+      <MenuCategory
+        items={grills}
+        title={"GRILL"}
+        coverImg={grillImg}
+      ></MenuCategory>
     </div>
   );
 };

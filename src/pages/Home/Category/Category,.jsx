@@ -8,8 +8,8 @@ import "swiper/css/pagination";
 
 import slide1 from "/images/home/slide1.jpg";
 import slide2 from "/images/home/slide2.jpg";
-import slide3 from "/images/home/slide3.jpg";
-import slide4 from "/images/home/slide4.jpg";
+import slide3 from "/images/home/Grill.jpg";
+import slide4 from "/images/home/burger.jpg";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const Category = () => {
@@ -30,27 +30,27 @@ const Category = () => {
         className="mySwiper mb-24"
       >
         <SwiperSlide>
-          <img src={slide1} alt="" />
-          <h3 className="text-center text-white font-bold -mt-16 uppercase text-4xl">
-            Salads
+          <img src={slide1} className="h-[400px]"  alt="" />
+          <h3 className="text-center absolute left-0  bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
+            coffee
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} alt="" />
-          <h3 className="text-center text-white font-bold -mt-16 uppercase text-4xl">
-            Salads
+          <img src={slide2} className="h-[400px]" alt="" />
+          <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
+            shawarma
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide3} alt="" />
-          <h3 className="text-center text-white font-bold -mt-16 uppercase text-4xl">
-            Salads
+          <img src={slide3} className="h-[400px]"  alt="" />
+          <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
+           Grill
           </h3>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide4} alt="" />
-          <h3 className="text-center text-white font-bold -mt-16 uppercase text-4xl">
-            Salads
+          <img src={slide4} className="h-[400px]"  alt="" />
+          <h3 className="text-center absolute left-0 bottom-0 text-white bg-gray-500 p-3 rounded-md font-bold -mt-16 uppercase lg:text-lg">
+           Burger
           </h3>
         </SwiperSlide>
       </Swiper>

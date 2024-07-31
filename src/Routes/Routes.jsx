@@ -6,8 +6,8 @@ import Orders from "../pages/Orders/Orders";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import Secret from "../pages/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "../pages/Dashboard/AddItem/AddItem";
@@ -15,7 +15,9 @@ import AdminRoute from "./AdminRoute/AdminRoute";
 import ManageItem from "../pages/Dashboard/ManageItem/ManageItem";
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
 import Payment from "../pages/Dashboard/Payment/Payment";
-
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import Contact from "../pages/Contact/Contact";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
         element: <Orders></Orders>,
       },
       {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
         path: "dashboard",
         element: (
           <PrivateRoute>
@@ -54,10 +60,25 @@ const router = createBrowserRouter([
             path: "cart",
             element: <Cart></Cart>,
           },
-     
+          {
+            path: "userHome",
+            element: <UserHome></UserHome>,
+          },
+          {
+            path: "paymentHistory",
+            element: <PaymentHistory></PaymentHistory>,
+          },
 
           // admin routes
-     {
+          {
+            path: "adminHome",
+            element: (
+              <AdminRoute>
+                <AdminHome></AdminHome>
+              </AdminRoute>
+            ),
+          },
+          {
             path: "addItems",
             element: (
               <AdminRoute>
@@ -73,17 +94,12 @@ const router = createBrowserRouter([
                 <ManageItem></ManageItem>
               </AdminRoute>
             ),
-        
           },
           {
             path: "payment",
-            element: (
-             
-              <Payment></Payment>
-      
-            ),
+            element: <Payment></Payment>,
           },
-          
+
           {
             path: "updateItem/:id",
             element: (
@@ -91,7 +107,8 @@ const router = createBrowserRouter([
                 <UpdateItem></UpdateItem>
               </AdminRoute>
             ),
-            loader: ({params})=> fetch(`http://localhost:5000/menu/${params.id}`)
+            loader: ({ params }) =>
+              fetch(`http://localhost:5000/menu/${params.id}`),
           },
           {
             path: "allUsers",

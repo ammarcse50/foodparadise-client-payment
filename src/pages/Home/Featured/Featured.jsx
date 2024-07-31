@@ -1,10 +1,10 @@
-import featuredImg from "/images/home/featured.jpg";
+import featuredImg from "/images/home/featuredImg.jpg";
 
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Helmet } from "react-helmet-async";
 const Featured = () => {
   return (
-    <div className={`bg-[url('${featuredImg}')] bg-fixed `}>
+    <div className={`bg-[url('/images/home/featuredBg.jpg')]  bg-fixed `}>
       <Helmet>
         <title>foodparadise | Featured</title>
       </Helmet>
@@ -13,7 +13,7 @@ const Featured = () => {
         subHeading={"CHECK IT OUT"}
         ></SectionTitle>
 
-      <div className="md:flex text-white justify-center items-center py-20 px-36">
+      <div className="md:flex text-black justify-center items-center py-20 px-36">
         <div className="">
           <img src={featuredImg} className="w-[400px] " alt="" />
         </div>
