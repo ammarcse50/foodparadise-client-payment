@@ -1,4 +1,3 @@
-
 import useCart from "../../../hooks/useCart";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -7,7 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const [cart,refetch] = useCart();
+  const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
   const axiosSecure = useAxiosSecure();
 
@@ -25,7 +24,7 @@ const Cart = () => {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
-             refetch()
+            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
@@ -42,7 +41,10 @@ const Cart = () => {
       <div className="flex justify-between">
         <h2 className="text-green-500">Items:{cart.length}</h2>
         <h2 className="text-green-500">Total Price:{totalPrice}</h2>
-     <Link to="/dashboard/payment"> <button className="bg-green-700 btn">Pay</button> </Link>   
+        <Link to="/dashboard/payment">
+          {" "}
+          <button className="bg-green-700 btn">Pay</button>{" "}
+        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">

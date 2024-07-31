@@ -1,5 +1,4 @@
 import FoodCard from "../../../components/FoodCard/FoodCard";
-import useMenu from "../../../hooks/useMenu";
 
 const OrderTab = ({items}) => {
    

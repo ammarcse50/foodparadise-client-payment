@@ -20,10 +20,10 @@ const Orders = ({ items }) => {
   console.log(menu);
 
   console.log(category);
-  const coffees = menu.filter((item) => item.category === "Coffee");
+  const coffees = menu.filter((item) => item.category ==="drinks" || "Coffee");
 
-  const bbqs = menu.filter((item) => item.category === "Grilled and BBQ");
-  const shawarmas = menu.filter((item) => item.category === "Sharma");
+  const bbqs = menu.filter((item) => item.category === "bbq");
+  const shawarmas = menu.filter((item) => item.category === "shawarma");
   const Grills = menu.filter((item) => item.category === "Grill");
 
   return (
@@ -32,23 +32,23 @@ const Orders = ({ items }) => {
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab selectedClassName="bg-orange-500 text-black rounded">COFFEE</Tab>
-          <Tab selectedClassName="bg-orange-500 text-black rounded">BBQ</Tab>
+          <Tab selectedClassName="bg-orange-500 text-black rounded">Grill</Tab>
           <Tab selectedClassName="bg-orange-500 text-black rounded">
             SHAWARMA
           </Tab>
-          <Tab selectedClassName="bg-orange-500 text-black rounded">Grill</Tab>
+          <Tab selectedClassName="bg-orange-500 text-black rounded">Burger</Tab>
         </TabList>
         <TabPanel>
           <OrderTab items={coffees}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <OrderTab items={bbqs}></OrderTab>
+          <OrderTab items={Grills}></OrderTab>
         </TabPanel>
         <TabPanel>
           <OrderTab items={shawarmas}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <OrderTab items={Grills}></OrderTab>
+          <OrderTab items={bbqs}></OrderTab>
         </TabPanel>
       </Tabs>
     </div>

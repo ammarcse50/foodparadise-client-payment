@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "/images/logo/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../components/AuthProvider/AuthProvider";
@@ -16,11 +16,14 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
+  const navigate = useNavigate()
 
   const handleLogOut = () => {
     logOut().then(() => {
+      navigate('/')
       Swal.fire("Logged Out User!");
     });
+
   };
   const navNavLinks = (
     <>

@@ -8,10 +8,10 @@ const useCart = () => {
   // tan stack query
 
   const { refetch, data: cart = [] } = useQuery({
-    queryKey: ["cart", user?.email],
+    queryKey: [user?.email, "cart"],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/carts?email=${user?.email}`);
+      const res = await axiosSecure.get(`/carts?email=${user.email}`);
 
       return res.data;
     },

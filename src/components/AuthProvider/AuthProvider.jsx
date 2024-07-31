@@ -15,9 +15,10 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
-  const [loading, SetLoading] = useState([]);
+  const [loading, SetLoading] = useState(true);
   const Provider = new GoogleAuthProvider();
   const axiosPublic = useAxiosPublic();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -35,6 +36,7 @@ const AuthProvider = ({ children }) => {
         //todo remove token if(stored in client)
 
         localStorage.removeItem("access-token");
+         
         SetLoading(false);
       }
 
@@ -45,13 +47,16 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, [axiosPublic]);
+
   const updateUserProfile = (name, photo) => {
+    SetLoading(true)
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     });
   };
   const createUser = (email, password) => {
+    SetLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
