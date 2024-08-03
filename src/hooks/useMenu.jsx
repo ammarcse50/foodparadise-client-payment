@@ -13,6 +13,15 @@ const useMenu = () => {
        
       return res.data;
     },
+    retry:(failureCount,error)=>{
+
+       if(error)
+       {
+        return false
+       }
+       return true
+    },
+    refetchInterval:1000
   });
  
   return [menu, refetch,menuLoading];

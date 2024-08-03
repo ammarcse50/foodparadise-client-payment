@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "https://foodparadise-server-payment-production.up.railway.app",
+  baseURL: "https://foodparadise-server.vercel.app",
 });
 const useAxiosPublic = () => {
   return axiosPublic;

@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,16 +12,23 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 const Testimonials = () => {
   const axiosPublic = useAxiosPublic();
-  const { loading } = useAuth();
+  // const { loading } = useAuth();
 
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews"],
-    enabled: !loading,
+    
     queryFn: async () => {
       const res = await axiosPublic.get("/reviews");
 
       return res.data;
     },
+    retry: (failure, error) => {
+      if (error) {
+        return false;
+      }
+      return true;
+    },
+    refetchInterval: 1000,
   });
 
   // useEffect(() => {
